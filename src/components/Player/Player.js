@@ -1,18 +1,29 @@
 import { useState, useEffect } from "react";
+import Modal from "../Modal/Modal";
 import "./Player.css";
 
 function Player({ token }) {
   const [page, setPage] = useState(0);
   const [tracks, setTracks] = useState([]);
   const [search, setSearch] = useState();
+  const [showModal, setShowModal] = useState(false);
+  const [link, setLink] = useState("");
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
     if (!e.currentTarget.track.value) {
       setSearch(undefined);
+      window.alert("Sin Resultados!");
     } else {
       setSearch(e.currentTarget.track.value);
     }
+    setPage(0);
+  };
+
+  const clickTrack = (e) => {
+    setShowModal(true);
+    const indexLink = parseInt(e.currentTarget.id);
+    setLink(tracks.items[indexLink].preview_url);
   };
 
   useEffect(() => {
@@ -31,7 +42,9 @@ function Player({ token }) {
         .then((response) => response.json())
         .then((data) => {
           setTracks(data.tracks);
-          console.log(data.tracks);
+          if (data.tracks.items.length === 0) {
+            window.alert("A Ocurrido un Error!");
+          }
         });
     }
   }, [token, page, search]);
@@ -55,7 +68,12 @@ function Player({ token }) {
           </div>
           {tracks.items.map((nameTrack, index) => {
             return (
-              <div className="contTrack" key={index}>
+              <div
+                onClick={clickTrack}
+                className="contTrack"
+                key={index}
+                id={index}
+              >
                 <img src={tracks.items[index].album.images[0].url} alt="img" />
                 <div className="textTrack">
                   <h1>{nameTrack.name}</h1>
@@ -64,6 +82,9 @@ function Player({ token }) {
               </div>
             );
           })}
+          <Modal showModal={showModal} setShowModal={setShowModal} link={link}>
+            Song Preview:
+          </Modal>
         </div>
       )}
     </div>

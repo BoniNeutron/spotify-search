@@ -1,58 +1,34 @@
 .contPlayer {
-  width: 600px;
+  margin: 0 auto;
+  max-width: 600px;
 }
 .form {
+  padding: 15px 0;
   display: flex;
   justify-content: center;
-  padding: 20px;
 }
 .form input {
   margin-right: 20px;
   padding: 5px 10px;
   border-radius: 25px;
+  border: none;
   background-color: #ffffff;
   color: #000000;
-  border: none;
-  font-size: 18px;
+  font-size: 16px;
 }
 .form button {
-  font-size: 18px;
+  font-size: 16px;
   padding: 5px 15px;
   border-radius: 25px;
   background-color: #1db954;
   color: #000000;
-  border: none;
   border: solid 2px #1db954;
 }
 .form button:hover {
-  font-size: 18px;
   cursor: pointer;
   background-color: #282c34;
   color: #1db954;
   border: solid 2px #1db954;
-}
-.contTrack {
-  display: flex;
-  align-items: center;
-  padding: 10px;
-}
-.contTrack:hover {
-  background: #000000;
-  border-radius: 4px;
-}
-.contTrack img {
-  height: 60px;
-}
-.textTrack {
-  line-height: 0;
-  padding-left: 20px;
-}
-.textTrack h1 {
-  font-size: 18px;
-  padding-bottom: 10px;
-}
-.textTrack p {
-  font-size: 14px;
 }
 .bttsPages {
   display: flex;
@@ -61,7 +37,7 @@
 }
 .bttsPages button {
   margin: 0 5px;
-  padding: 4px 10px;
+  padding: 4px 8px;
   border-radius: 25px;
   border: none;
   font-size: 12px;
@@ -71,4 +47,51 @@
 .bttsPages button:hover {
   cursor: pointer;
   background: #bebebe;
+}
+.contTrack {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  color: #fff;
+}
+.contTrack:hover {
+  background: #000000;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.contTrack img {
+  height: 60px;
+}
+.textTrack {
+  line-height: 16px;
+  padding: 0 15px;
+}
+.textTrack h1 {
+  font-size: 18px;
+}
+.textTrack p {
+  font-size: 14px;
+}
+
+@media (max-width: 600px) {
+  .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .form input {
+    width: 200px;
+    margin: 0;
+  }
+  .form button {
+    margin-top: 10px;
+    width: 200px;
+    padding: 3px 0;
+  }
+  .textTrack h1 {
+    font-size: 16px;
+  }
+  .textTrack p {
+    font-size: 12px;
+  }
 }

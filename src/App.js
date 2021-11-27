@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import "./App.css";
 import Login from "./components/Login/Login";
 import Player from "./components/Player/Player";
 import { getTokenFromResponse } from "./components/Spotify";
@@ -17,9 +16,7 @@ function App() {
     }
   }, []);
 
-  return (
-    <div className="App">{token ? <Player token={token} /> : <Login />}</div>
-  );
+  return token ? <Player token={token} /> : <Login />;
 }
 
 export default App;
